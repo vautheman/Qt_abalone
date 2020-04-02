@@ -1,0 +1,8 @@
+<RCC>
+    <qresource lang="Francais" prefix="/new/icon">
+        <file alias="bleu">Images/emplbleu.png</file>
+        <file alias="bleuok">Images/emplbleuok.png</file>
+        <file alias="rouge">Images/emplrouge.png</file>
+        <file alias="rougeOk">Images/emplrougeOk.png</file>
+    </qresource>
+</RCC>
