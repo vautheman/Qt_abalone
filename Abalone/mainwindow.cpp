@@ -16,39 +16,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::initialisePlateau()
 {
-    /*
-    QPushButton* boutonbleuLigne1 = new QPushButton();
-    boutonbleuLigne1->setIcon(QIcon(QPixmap(":/new/icon/bleu")));
-    ui->gridLayoutPlateau->addWidget(boutonbleuLigne1,noLigne,noCol);
-    */
-
-    for(int noColone = 0; noColone < 17; noColone ++)
+    int colDepart = 4;
+    for(int ligne = 0; ligne < 9; ligne++)
     {
-        if(noColone != 4)
+        for(int col = colDepart; col < 18 - colDepart; col +=2)
         {
-            QPushButton* boutonbleuLigne1 = new QPushButton();
-            ui->gridLayoutPlateau->addWidget(boutonbleuLigne1,0,noColone);
+            QPushButton* nouveauBouton = new QPushButton();
+            if(ligne < 2 || (ligne == 2 && col >= 6 && col <= 10))
+                nouveauBouton->setIcon(QIcon(QPixmap(":/icon/bleu")));
+            else if(ligne > 6 || (ligne == 6 && col >= 6 && col <=10))
+                nouveauBouton->setIcon(QIcon(QPixmap(":/icon/rouge")));
+            else
+                nouveauBouton->setIcon(QIcon(QPixmap(":/icon/vide")));
+            ui->gridLayoutPlateau->addWidget(nouveauBouton, ligne, col);
         }
-
-        if(noColone != 13)
-        {
-            int reste = noColone % 2;
-
-            if(reste != 0)
-            {
-                noColone ++;
-            } else {
-                QPushButton* boutonbleuLigne1 = new QPushButton();
-                boutonbleuLigne1->setIcon(QIcon(QPixmap(":/new/icon/bleu")));
-                ui->gridLayoutPlateau->addWidget(boutonbleuLigne1,0,noColone);
-            }
-        }
-
-        if(noColone > 13)
-        {
-            QPushButton* boutonbleuLigne1 = new QPushButton();
-            ui->gridLayoutPlateau->addWidget(boutonbleuLigne1,0,noColone);
-        }
+        if(ligne < 4)
+            colDepart --;
+        else
+            colDepart ++;
     }
 }
 
